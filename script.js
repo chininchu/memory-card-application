@@ -53,6 +53,28 @@ function checkMatch() {
     flippedCards = [];
 }
 
+// Timer Logic
+let timerInterval;
 
+document.getElementById('startGameBtn').addEventListener('click', function () {
+    // Start the timer
+    let timeLeft = 10 * 60; // 10 minutes in seconds
+    timerInterval = setInterval(function () {
+        timeLeft--;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        document.getElementById('timer').textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            alert('Time is up! Game over.');
+            // Reset the game (if necessary)
+            location.reload();
+        }
+    }, 1000);
+
+    // Disable the start game button to prevent multiple timers
+    this.disabled = true;
+});
 
 
