@@ -77,4 +77,28 @@ document.getElementById('startGameBtn').addEventListener('click', function () {
     this.disabled = true;
 });
 
+// Theme toggle functionality
+const themeToggle = document.getElementById('themeToggle');
+const bodyElement = document.body;
+
+// Check for saved theme preference in localStorage and apply
+const savedTheme = localStorage.getItem('theme');
+if (savedTheme) {
+    bodyElement.classList.add(savedTheme);
+    if (savedTheme === 'dark-mode') {
+        themeToggle.checked = true;
+    }
+}
+
+// Add event listener to the theme toggle switch
+themeToggle.addEventListener('change', function() {
+    if (this.checked) {
+        bodyElement.classList.add('dark-mode');
+        localStorage.setItem('theme', 'dark-mode');
+    } else {
+        bodyElement.classList.remove('dark-mode');
+        localStorage.removeItem('theme');
+    }
+});
+
 
