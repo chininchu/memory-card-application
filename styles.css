@@ -22,8 +22,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #333;
-    color: #fff;
+    background-color: #a5a5a5;
+    color: #333;
     font-size: 2em;
     cursor: pointer;
 }
@@ -47,6 +47,7 @@ body {
     font-size: 1.5em;
     margin-bottom: 10px;
 }
+
 
 /* Toggle Switch Styles */
 .switch {
@@ -101,14 +102,17 @@ input:checked + .slider:before {
 }
 
 /* Dark Mode Styles */
+
+
+.game-board.dark-mode .card {
+    background-color: #a5a5a5; /* Light gray background */
+    color: #333; /* Dark text */
+    border: 1px solid #f0f0f0; /* Adding a slight border for better visibility */
+}
+
 body.dark-mode {
     background-color: #333;
     color: #f0f0f0;
-}
-
-.game-board.dark-mode .card {
-    background-color: #f0f0f0;
-    color: #333;
 }
 
 #startGameBtn.dark-mode {
@@ -119,4 +123,10 @@ body.dark-mode {
 #startGameBtn.dark-mode:hover {
     background-color: #003d7a;
 }
+
+
+
+
+
+
 
