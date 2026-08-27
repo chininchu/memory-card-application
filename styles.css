@@ -1,132 +1,181 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-    flex-direction: column;
-    font-family: 'Arial', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f0f0f0;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #192a3a;
+  background: linear-gradient(135deg, #f6f1e8, #dce9e7);
+  font-family: Georgia, "Times New Roman", serif;
+  transition:
+    background 0.3s,
+    color 0.3s;
+}
+
+.game {
+  width: min(100% - 32px, 620px);
+  padding: 32px 0;
+}
+
+.game-header,
+.scoreboard {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.eyebrow {
+  margin: 0 0 6px;
+  color: #c45b35;
+  font: 700 0.75rem/1 sans-serif;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0;
+  font-size: clamp(2.2rem, 8vw, 4rem);
+  line-height: 0.95;
+}
+
+.status {
+  min-height: 1.4em;
+  margin: 12px 0 0;
+  color: #536674;
+  font: 1rem/1.4 sans-serif;
+}
+
+.theme-control {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font: 0.85rem sans-serif;
+}
+
+.theme-control input {
+  width: 18px;
+  height: 18px;
+  accent-color: #c45b35;
+}
+
+.scoreboard {
+  margin: 32px 0 16px;
+  padding: 14px 18px;
+  border-block: 1px solid #a9bbb9;
+}
+
+.scoreboard div {
+  display: grid;
+  gap: 4px;
+}
+
+.scoreboard span {
+  color: #536674;
+  font: 0.7rem sans-serif;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.scoreboard strong {
+  font-size: 1.35rem;
 }
 
 .game-board {
-    width: 320px;
-    height: 320px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 10px;
+  width: 100%;
+  aspect-ratio: 1;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(6px, 2vw, 12px);
 }
 
 .card {
-    width: 70px;
-    height: 70px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: #a5a5a5;
-    color: #333;
-    font-size: 2em;
-    cursor: pointer;
+  min-width: 0;
+  border: 2px solid #78918e;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #315b5a;
+  color: #fff;
+  font:
+    700 clamp(1.4rem, 6vw, 2.5rem) Georgia,
+    serif;
+  cursor: pointer;
+  transition:
+    transform 0.18s,
+    background 0.18s;
+}
+
+.card:hover,
+.card:focus-visible {
+  transform: translateY(-3px);
+  background: #244746;
+  outline: 3px solid #c45b35;
+  outline-offset: 2px;
+}
+
+.card.flipped,
+.card.matched {
+  background: #fffaf1;
+  color: #192a3a;
+}
+
+.card.matched {
+  border-color: #c45b35;
+  cursor: default;
 }
 
 #startGameBtn {
-    background-color: #007BFF;
-    color: #fff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-bottom: 10px;
-    font-size: 1.2em;
+  display: block;
+  margin: 24px auto 0;
+  padding: 12px 24px;
+  border: 0;
+  border-radius: 6px;
+  background: #9f3f24;
+  color: #fff;
+  font: 700 1rem sans-serif;
+  cursor: pointer;
 }
 
-#startGameBtn:hover {
-    background-color: #0056b3;
-}
-
-#timer {
-    font-size: 1.5em;
-    margin-bottom: 10px;
-}
-
-
-/* Toggle Switch Styles */
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-}
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    transition: 0.4s;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 26px;
-    width: 26px;
-    left: 4px;
-    bottom: 4px;
-    background-color: white;
-    transition: 0.4s;
-}
-
-input:checked + .slider {
-    background-color: #2196F3;
-}
-
-input:checked + .slider:before {
-    transform: translateX(26px);
-}
-
-.slider.round {
-    border-radius: 34px;
-}
-
-.slider.round:before {
-    border-radius: 50%;
-}
-
-/* Dark Mode Styles */
-
-
-.game-board.dark-mode .card {
-    background-color: #a5a5a5; /* Light gray background */
-    color: #333; /* Dark text */
-    border: 1px solid #f0f0f0; /* Adding a slight border for better visibility */
+#startGameBtn:hover,
+#startGameBtn:focus-visible {
+  background: #7d301c;
+  outline: 3px solid #192a3a;
+  outline-offset: 2px;
 }
 
 body.dark-mode {
-    background-color: #333;
-    color: #f0f0f0;
+  color: #f6f1e8;
+  background: linear-gradient(135deg, #182b35, #304b4b);
 }
 
-#startGameBtn.dark-mode {
-    background-color: #0056b3;
-    color: #f0f0f0;
+body.dark-mode .status,
+body.dark-mode .scoreboard span {
+  color: #c2d1ca;
 }
 
-#startGameBtn.dark-mode:hover {
-    background-color: #003d7a;
+body.dark-mode .scoreboard {
+  border-color: #66817d;
 }
 
+body.dark-mode .card.flipped,
+body.dark-mode .card.matched {
+  background: #f6f1e8;
+  color: #192a3a;
+}
 
+@media (max-width: 420px) {
+  .game-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
 
-
-
-
-
+  .theme-control {
+    align-self: flex-end;
+  }
+}

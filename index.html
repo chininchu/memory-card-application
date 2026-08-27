@@ -1,35 +1,45 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
 
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
 
     <title>Memory Card Game</title>
+  </head>
+  <body>
+    <main class="game" aria-labelledby="gameTitle">
+      <header class="game-header">
+        <div>
+          <p class="eyebrow">Focus / Recall</p>
+          <h1 id="gameTitle">Memory Match</h1>
+          <output id="gameStatus" class="status" aria-live="polite">
+            Press start when you are ready.
+          </output>
+        </div>
+        <label class="theme-control">
+          <span>Dark mode</span>
+          <input type="checkbox" id="themeToggle" />
+        </label>
+      </header>
 
+      <section class="scoreboard" aria-label="Game statistics">
+        <div><span>Time</span><strong id="timer">10:00</strong></div>
+        <div><span>Moves</span><strong id="moves">0</strong></div>
+        <div><span>Pairs</span><strong id="pairs">0 / 8</strong></div>
+      </section>
 
-</head>
-<body>
+      <div class="game-board" id="gameBoard" aria-label="Memory cards"></div>
 
-<label class="switch">
-    <input type="checkbox" id="themeToggle">
-    <span class="slider round"></span>
-</label>
+      <button id="startGameBtn" type="button">Start game</button>
+    </main>
 
-<div class="game-board" id="gameBoard"></div>
-
-
-<button id="startGameBtn">Start Game</button>
-<div id="timer">10:00</div>
-
-<script src="script.js"></script>
-
-
-</body>
-
-
-
+    <script src="script.js"></script>
+  </body>
 </html>
